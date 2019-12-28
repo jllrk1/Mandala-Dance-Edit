@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" href="Mandala_Dance_Edit.css" type="text/css" media="screen" charset="utf-8">
+    <title>Mandala Dance Edit</title>
+</head>
+<!--This is not mine originally, but added customizable options, etc -->
+<body>
+  <div id="mBody">
+   <div style="display:table;">
+   <div id="ascell" style="stroke:black; display:table-cell; width:100%; text-align:center;">
+   <svg id="asvg" viewbox="0,0,400,400" style="stroke:black; margin-left:1px; height:auto;">
+            <!--  <svg id="asvg" viewbox="0,0,500,500" style="margin-left:1px; height:auto;">-->
+   <defs>
+     <filter id="f1" x="0" y="0" width="400" height="400">
+       <feImage xlink:href="#phsRG" result="phsRG"/>
+      <feImage xlink:href="#mBody" result="mBody"/>
+    <feBlend mode="overlay" in="mBody" in2="phsRG" />
+    </filter>
+    <filter id="f2" x="0" y="0" width="400" height="400">
+       <feImage xlink:href="#phsRG" result="phsRG"/>
+       <feImage xlink:href="#asvg" result="asvg"/>
+       <feImage xlink:href="#rpath" result="rpath"/>
+    <feBlend mode="difference" in="phsRG" in2="rpath" />
+    </filter>
+   <clipPath id="rframe">
+     <circle id="ccirc" cx="0" cy="0" r="200" filter="url(#f1)" />
+     <circle id="ccirc2" cx="0" cy="0" r="200" filter="url(#f2)" />
+   </clipPath>
+   <radialGradient id="phsRG" cx="0" cy="0" fx="0" fy="0" spreadMethod="pad" r="200" gradientUnits="userSpaceOnUse"></radialGradient></defs>
+            <g id="pcontrol" transform="matrix(0, -1, 1, 0, 200, 200)"
+               clip-path="url(#rframe)">
+               <g id="roid">
+                  <path id="rpath" style="fill:#CCAA66; fill-rule:evenodd;" d="" />
+               </g>
+            </g>
+         </svg>
+      </div>
+
+     <div id="menuPg" style="display:table-cell; vertical-align:top; text-align:center;">
+         <button class="pmenux" onclick="start();">
+            <span id="onoff" class="indic"
+               style="font-weight:bold;">&#10679;</span>
+            <span id="ss">Start</span>
+         </button>
+         <button class="pmenux" data-state="0" title="show"
+            data-con="anim" onclick="togMenu(this)">
+            <span class="indic">&#10148;</span>
+            Properties
+         </button>
+         <div id="cdivanim" class="tacont">
+         <table id="propsanim" cellspacing="0" class="ctable">
+         <tr class="phead">
+         <td colspan="2">&#160;</td>
+         <td style="white-space:nowrap; padding:4px;">Lock value</td>
+               </tr>
+               <tr>
+                  <td colspan="3" style="padding:4px;">
+                  </td>
+               </tr>
+               <tr>
+               <td class="tlabel">Transition speed:</td>
+                  <td class="control">
+                     <div id="durRep" class="treport"
+                        style="text-align:center;">10s
+                </div>
+<input type="range" class="sliderP" min="1" max="30" value="10"oninput="changeDuration(this);"></input>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="tlabel">Rotation effect:</td>
+                  <td class="control">
+                     <div id="rotRep" class="treport"
+                        style="text-align:center;">100%</div>
+                     <input type="range" class="sliderP" min="0"
+                        max="1" step="0.01" value="1.00"
+                        oninput="changeRotation(this);"></input>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="tlabel">
+                     Curve count:
+                  </td>
+                  <td class="control">
+                     <div id="ccRep" class="treport"
+                        style="text-align:center;">
+                        1</div>
+                     <input id="ccRange" type="range" class="sliderP"
+                        min="1" max="4" value="1"
+                        oninput="inputCurveCount(this)"></input>
+                  </td>
+                  <td><input id="kCount" type="checkbox"
+                        onclick="lockCurveCount(this);" />
+                  </td>
+               </tr>
+               <tr>
+                  <td class="tlabel">
+                     Curve cycle count:</td>
+                  <td class="control">
+                     <div id="cvRep" class="treport"
+                        style="text-align:center;">
+                        9</div>
+                     <input id="cvRange" type="range" class="sliderP"
+                        min="2" max="17" value="9"
+                        oninput="inputCurveCycles(this)"></input>
+                  </td>
+                  <td><input id="kCycle" type="checkbox"
+                        onclick="lockCurveCycles(this);" />
+                  </td>
+               </tr>
+            <!--   <tr>
+                 <td class="tlabel"> rpath Stroke Width:</td>
+                    <td class="control">
+                      <div id="rStrokeWidth_value" class="treport" style="text-align:center;">0.50</div>  
+                <input id="rStrokeWidth_slider"type="range"  class="sliderP" min="0" max="5" step="0.01" value="0.50" oninput="changerStrokeWidth(this);">
+              </tr>-->
+               <tr>
+                 <td class="tlabel">asvg Stroke Width:</td>
+                    <td class="control">
+                      <div id="aStrokeWidth_value" class="treport" style="text-align:center;">0.75</div>  
+                <input id="aStrokeWidth_slider"type="range"  class="sliderP" min="0" max="5" step="0.01" value="0.75" oninput="changeaStrokeWidth(this);">
+              </tr>
+               <tr>
+                 <td class="tlabel"> Stroke Miter Length:</td>
+                    <td class="control">
+                      <div id="strokeML_value" class="treport" style="text-align:center;">10.00</div>  
+                <input id="strokeML_slider"type="range"  class="sliderP" min="0" max="10" step="1.00" value="10.00" oninput="changestrokeML(this);">
+              </tr>
+			  <tr>
+			      <td class="tlabel">Stroke Opacity:</td>
+						<td class="control">
+                     <div id="strokeopacity_value" class="treport" style="text-align:center;">100%</div>  
+                     <input type="range"  class="sliderP" min="0"
+                        max="1" step="0.01" value="1.0" oninput="changestrokeOpacity(this);" id="strokeopacity_slider">
+			  </tr>
+			  <tr>
+			      <td class="tlabel">Fill Opacity:</td>
+						<td class="control">
+                     <div id="fillopacity_value" class="treport" style="text-align:center;">100%</div>  
+                     <input type="range"  class="sliderP" min="0"
+                        max="1" step="0.01" value="1.0" oninput="changefillOpacity(this);" id="fillopacity_slider">
+			  </tr>
+<tr>
+          <div id="mixblend" style="text-align:center;">
+              <td class="tlabel">Mix Blend Mode:</td>
+						<td class="control">
+         <select id="mBlend-select" class="treport">
+          <option selected>normal</option>
+          <option>multiply</option>
+          <option>screen</option>
+          <option>overlay</option>
+          <option>darken</option>
+          <option>lighten</option>
+          <option>color-dodge</option>
+          <option>color-burn</option>
+          <option>hard-light</option>
+          <option>soft-light</option>
+          <option>difference</option>
+          <option>exclusion</option>
+          <option>hue</option>
+          <option>saturation</option>
+          <option>color</option>
+          <option>luminosity</option>
+        </select>
+              </tr>
+             <!-- <tr>
+               <td class="tlabel">Isolation:</td>
+						<td class="control">
+         <select id="iso-select" class="treport">
+          <option selected>auto</option>
+          <option>isolate</option>
+              </select>
+              </div>         
+			  </tr>-->
+			  <tr class="phead">
+          <td style="padding:2px;" colspan="4">&nbsp;</td>
+               </tr>
+
+                 <td class="tlabel">
+                  Background Color Effect:</td>
+                  <td class="control">
+                     <div id="rgb_value_container" class="sliderP"
+                        style="text-align:center;">
+                     
+
+                     <input type="range" min="0" max="255" value="0"
+                        class="slider" id="red_slider">
+                     <p>Red:
+                        <span id="red_value">0</span>
+                     </p>
+
+                     <input type="range" min="0" max="255" value="0"
+                        class="slider" id="green_slider">
+                     <p>Green:
+                        <span id="green_value">0</span>
+                     </p>
+
+                     <input type="range" min="0" max="255" value="0"
+                        class="slider" id="blue_slider">
+                     <p>Blue:
+                        <span id="blue_value">0</span>
+                     </p>
+                  </td>
+               </tr>
+</div>
+			  <tr class="phead">
+          <td style="padding:2px;" colspan="5">&nbsp;</td>
+               </tr>
+			                    <td class="tlabel">
+                  Stroke Color Effect:</td>
+                  <td class="control">
+                     <div id="rgb_value_container" class="sliderP"
+                        style="text-align:center;">
+                     
+
+                     <input type="range" min="0" max="255" value="0"
+                        class="slider" id="strkred_slider">
+                     <p>Red:
+                        <span id="strkred_value">0</span>
+                     </p>
+
+                     <input type="range" min="0" max="255" value="0"
+                        class="slider" id="strkgreen_slider">
+                     <p>Green:
+                        <span id="strkgreen_value">0</span>
+                     </p>
+
+                     <input type="range" min="0" max="255" value="0"
+                        class="slider" id="strkblue_slider">
+                     <p>Blue:
+                        <span id="strkblue_value">0</span>
+                     </p>
+
+
+                      <!--  <span id="StrokeWidth_value">1</span>-->
+                    
+                  </td>
+               </tr>
+</div>
+            </table>
+         </div>
+
+         </button>
+      </div>
+   </div>
+ </div>  
+</body>
+<!-- javascript -->
+    <script src="Mandala_Dance_Edit.js"></script>
+</html>

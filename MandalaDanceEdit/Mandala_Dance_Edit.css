@@ -1,0 +1,226 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+  font-size: 0.8em;
+  background: #000000;
+
+  background-blend-mode: normal;
+}
+#mBody {
+  padding: 5px;
+  background-color: rgb(var(--red-color), var(--green-color), var(--blue-color));
+  
+  overflow: inherit;
+  
+  
+}
+#rpath {
+ /* stroke-width: var(--rStrokeWidth);*/
+  stroke: rgb(var(--Strk_red-color), var(--Strk_green-color), var(--Strk_blue-color)); 
+ 
+
+
+  
+}
+
+#ascell{
+/* background-blend-mode: normal;*/
+ mix-blend-mode: normal;  
+}
+#asvg{
+ /*background-blend-mode: overlay;*/
+ mix-blend-mode: normal;
+ 
+ stroke-width: var(--aStrokeWidth);
+ opacity: var(--fopacity);
+  stroke-linejoin: miter;
+  stroke-miterlimit: var(--strokeML);
+  stroke-linecap: square;
+  stroke-opacity: var(--opacity);
+  stroke-dasharray: 0;
+  stroke-dashoffset: 0;
+}
+
+button.abtn {
+  margin: 4px 6px;
+  width: 60px;
+}
+tr.phead {
+  background: #fafaff;
+  border-bottom: 1px solid silver;
+}
+div.pmain {
+ /* background: #efeff8;*/
+  background: #000000;
+  border-bottom: 1px solid silver;
+  padding: 4px 8px;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 0.9em;
+
+}
+div.pmenu {
+  background: #efeff8;
+  border-bottom: 1px solid silver;
+  padding: 4px 8px;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+button.pmenux {
+  display: block;
+  width: 100%;
+  padding: 4px 8px;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 0.9em;
+}
+
+span.indic {
+  float: right;
+  margin-left: 20px;
+  transform: rotate(0deg);
+  color: #888;
+  font-size: 10pt;
+}
+div.tacont {
+  overflow: hidden;
+  width: 120px;
+  height: 0;
+}
+table.ctable {
+	width: 400px;
+	margin: auto;
+	border: 5px solid silver;
+	border-collapse: collapse;
+	background: #FFF;
+}
+td.tlabel {
+	text-align: right;
+	padding: 4px 8px;
+	white-space: nowrap;
+}
+
+td.control {
+	text-align: left;
+	white-space: nowrap;
+}
+div.treport {
+	float: left;
+	width: 64px;
+	margin-top: 4px;
+	text-align: right;
+	border: 1px solid silver;
+	padding-right: 2px;
+}
+
+input.sliderP {
+	float: right;
+	width: 80px;
+	margin-left: 5px;
+}
+#thefile {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+}
+#audio {
+  position: fixed;
+  left: 10px;
+  bottom: -15px;
+  padding: 5px;
+  width: calc(100% - 20px);
+  float: bottom;
+}
+
+
+:root {
+ --red-color:0;
+ --blue-color:0;
+ --green-color:0;
+ --opacity:100;
+ --rStrokeWidth:0.50;
+ --aStrokeWidth:0.50;
+ --Strk_red-color:0;
+ --Strk_blue-color:0;
+ --Strk_green-color:0;
+ --fopacity:100;
+}
+
+.slider {
+  display: block;
+  -webkit-appearance: none;
+  height: 5px;
+  border-radius: 2.5px;
+  background: #d3d3d3;
+  outline: none;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  width: 80%;
+  margin-left: 20%;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+#rgb_value_container {
+  text-align: center;
+  font-weight: bold;
+  font-size: 10px;
+  padding: 5px;
+}
+
+#red_slider {
+  background: linear-gradient(to right, rgb(0, 0, 0), rgb(255, var(--green-color), var(--blue-color)));
+}
+
+#green_slider {
+  background: linear-gradient(to right, rgb(0, 0, 0), rgb(var(--red-color), 255, var(--blue-color)));
+}
+
+#blue_slider {
+  background: linear-gradient(to right, rgb(0, 0, 0), rgb(var(--red-color), var(--green-color), 255));
+}
+
+#strokeopacity_slider {
+  padding: 1px;
+}
+#fillopacity_slider {
+  padding: 1px;
+}
+#strkred_slider {
+  background: linear-gradient(to right, rgb(0, 0, 0), rgb(255, var(--Strk_green-color), var(--Strk_blue-color)));
+}
+
+#strkgreen_slider {
+  background: linear-gradient(to right, rgb(0, 0, 0), rgb(var(--Strk_red-color), 255, var(--Strk_blue-color)));
+}
+
+#strkblue_slider {
+  background: linear-gradient(to right, rgb(0, 0, 0), rgb(var(--Strk_red-color), var(--Strk_green-color), 255));
+}
+
+#blend {
+  padding: 1px;
+}
+
